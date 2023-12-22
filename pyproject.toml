@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "airflow-workshop"
+version = "0.1.0"
+description = "Airflow para ws de deploy."
+authors = ["Felipe Sebben <felipesebben@yahoo.com.br>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pre-commit = "^3.6.0"
+taskipy = "^1.12.2"
+black = "^23.12.0"
+isort = "^5.13.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+format = "isort . && black dags --exclude logs"
+commit = "git add . && pre-commit run"
